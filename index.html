@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIMITLESS - AR Technique System</title>
+  <link rel="stylesheet" href="styles.css?v=six-eyes-soft-1">
+</head>
+<body class="gate-active">
+  <section id="operatorGate" class="operator-gate" aria-labelledby="operatorGateTitle">
+    <div class="gate-panel">
+      <p class="eyebrow">Restricted Interface</p>
+      <h1 id="operatorGateTitle">Operator</h1>
+      <p class="gate-copy">Enter your name to begin.</p>
+      <form id="operatorGateForm" class="gate-form">
+        <label for="operatorNameInput">User name</label>
+        <input id="operatorNameInput" name="operatorName" type="text" autocomplete="name" maxlength="24" placeholder="Your name" required>
+        <button class="system-button" type="submit">Open System</button>
+      </form>
+      <div class="gate-loading" aria-hidden="true">
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <div id="welcomeToast" class="welcome-toast" role="status" aria-live="polite" hidden>
+    Welcome, Sorcerer
+  </div>
+
+  <main class="app-shell">
+    <aside class="ritual-panel" aria-label="Invocation panel">
+      <div class="ritual-brand">
+        <div class="brand-mark" aria-hidden="true">AR</div>
+        <p class="eyebrow">Forbidden Interface</p>
+        <h2 id="operatorDisplayName">Operator</h2>
+      </div>
+
+      <div class="ritual-status" aria-live="polite">
+        <div class="ritual-line">
+          <span id="microphoneStatusDot" class="status-dot pending"></span>
+          <div>
+            <small>Mic</small>
+            <strong id="microphoneStatusText">Click Start System</strong>
+          </div>
+        </div>
+        <div class="ritual-line">
+          <span id="voiceStatusDot" class="status-dot pending"></span>
+          <div>
+            <small>Listening</small>
+            <strong id="voiceStatusText">Voice: Standby</strong>
+          </div>
+        </div>
+      </div>
+
+      <p class="command-hint">Say a command...</p>
+
+      <button id="startSystemButton" class="system-button" type="button">
+        Start System
+      </button>
+      <button id="commandGuideButton" class="guide-button" type="button" aria-haspopup="dialog" aria-expanded="false">
+        ?
+      </button>
+      <button id="summonMahoragaButton" class="hidden-command-button" type="button" aria-hidden="true" tabindex="-1">
+        Summon Mahoraga
+      </button>
+    </aside>
+
+    <section id="domainStage" class="domain-stage" aria-label="Domain display">
+      <header class="domain-header">
+        <p class="eyebrow">Forbidden Technique Engine</p>
+        <h1>LIMITLESS</h1>
+      </header>
+
+      <div class="cinema-screen">
+        <div class="idle-starfield" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div id="cinemaVfx" class="cinema-vfx" aria-hidden="true">
+          <div class="vfx-fog"></div>
+          <div class="vfx-particles"></div>
+          <div class="vfx-energy-streams"></div>
+          <div class="vfx-ritual-circle">
+            <span></span>
+            <span></span>
+          </div>
+          <div class="vfx-symbols">
+            <span>術</span>
+            <span>領</span>
+            <span>域</span>
+            <span>廻</span>
+          </div>
+        </div>
+        <div id="domainBackdrop" class="domain-backdrop" aria-hidden="true">
+          <div class="domain-effect void-domain">
+            <canvas id="unlimitedVoidCanvas" class="unlimited-void-canvas"></canvas>
+            <div class="void-glow"></div>
+            <div class="void-stars"></div>
+            <div class="void-symbols" aria-hidden="true">
+              <span>無</span>
+              <span>限</span>
+              <span>知</span>
+              <span>虚</span>
+              <span>空</span>
+            </div>
+            <div class="void-silence-symbol" aria-hidden="true">無</div>
+            <div class="void-quote" aria-hidden="true">
+              <span>“Domain Expansion.”</span>
+              <i></i>
+            </div>
+            <div class="void-fractures" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="void-primal-eye" aria-hidden="true">
+              <span class="eye-ring"></span>
+              <span class="eye-lid"></span>
+              <span class="eye-core"></span>
+            </div>
+            <div class="void-knowledge-field" aria-hidden="true">
+              <span>無限</span>
+              <span>lim n→∞</span>
+              <span>知覚</span>
+              <span>∅</span>
+              <span>六眼</span>
+              <span>∀x</span>
+              <span>虚式</span>
+              <span>∞</span>
+              <span>0 / 0</span>
+              <span>存在</span>
+              <span>∴</span>
+              <span>領域</span>
+            </div>
+            <div class="void-observers" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="void-horizon" aria-hidden="true"></div>
+            <div class="void-silhouette" aria-hidden="true"></div>
+            <div class="void-tear" aria-hidden="true"></div>
+            <div class="void-limitless-word" aria-hidden="true">LIMITLESS</div>
+            <div class="void-distortion"></div>
+          </div>
+
+          <div class="domain-effect shrine-domain">
+            <div class="shrine-sky"></div>
+            <div class="shrine-smoke"></div>
+            <div class="shrine-ground">
+              <span class="crack crack-a"></span>
+              <span class="crack crack-b"></span>
+              <span class="crack crack-c"></span>
+            </div>
+            <div class="shrine-debris">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="shrine-bones">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="shrine-silhouette">
+              <span class="roof"></span>
+              <span class="pillar left"></span>
+              <span class="pillar right"></span>
+              <span class="pillar center"></span>
+              <span class="base"></span>
+            </div>
+            <div class="shrine-particles"></div>
+            <div class="glitch-scan"></div>
+          </div>
+        </div>
+        <div id="domainModelLayer" class="domain-model-layer" aria-hidden="true">
+          <canvas id="domainModelCanvas"></canvas>
+          <div id="shrineFallback" class="shrine-fallback" aria-hidden="true">
+            <span class="fallback-roof"></span>
+            <span class="fallback-pillar left"></span>
+            <span class="fallback-pillar center"></span>
+            <span class="fallback-pillar right"></span>
+            <span class="fallback-base"></span>
+          </div>
+        </div>
+        <div id="techniqueLayer" class="technique-layer" aria-hidden="true">
+          <div id="blueOrb" class="technique-orb blue-orb"></div>
+          <div id="redOrb" class="technique-orb red-orb"></div>
+          <div id="purpleCore" class="purple-core"></div>
+        </div>
+        <div id="summonLayer" class="summon-layer" aria-hidden="true">
+          <div class="summon-shadow"></div>
+          <div class="summon-smoke"></div>
+          <div class="summon-circle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="adaptation-wheel">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="adaptation-bubble">Addapting Final Boss</div>
+          <div id="mahoragaModelStage" class="mahoraga-model-stage">
+            <div class="mahoraga-body-smoke"></div>
+            <div class="mahoraga-model-aura"></div>
+            <canvas id="mahoragaCanvas"></canvas>
+          </div>
+        </div>
+        <div class="stage-grid" aria-hidden="true"></div>
+        <div class="stage-content">
+          <p id="stageStateText" class="stage-state" aria-live="polite"></p>
+        </div>
+        <div id="activationOverlay" class="activation-overlay">
+          <div class="activation-card">
+            <span id="activationText" class="activation-title">[ CURSED ENERGY DETECTED ]</span>
+            <span id="activationSubtext" class="activation-subtitle">Synchronizing...</span>
+            <div id="activationMeter" class="activation-meter">░░░░░░░░░░ 0%</div>
+            <div class="activation-progress" aria-hidden="true">
+              <span id="activationProgressFill"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="control-panel system-panel" aria-label="System status panel">
+      <header class="panel-header">
+        <p class="eyebrow">Status</p>
+        <h2>System</h2>
+      </header>
+
+      <div class="camera-preview">
+        <video id="webcam" autoplay playsinline muted></video>
+        <canvas id="landmarkCanvas" aria-label="Hand tracking overlay"></canvas>
+        <div id="emptyState" class="empty-state">
+          Click Start System to enable camera and microphone.
+        </div>
+      </div>
+
+      <div class="status-stack status-ledger" aria-live="polite">
+        <div class="status-row sr-only">
+          <span id="cameraStatusDot" class="status-dot pending"></span>
+          <span id="cameraStatusText">Requesting Camera Access...</span>
+        </div>
+        <div class="status-row sr-only">
+          <span id="handStatusDot" class="status-dot pending"></span>
+          <span id="handStatusText">Starting Hand Tracking...</span>
+        </div>
+        <div class="status-row sr-only">
+          <span id="fingerStatusDot" class="status-dot pending"></span>
+          <span id="fingerStatusText">Fingers Detected: 0</span>
+        </div>
+        <div class="status-row sr-only gesture-row">
+          <span id="gestureStatusDot" class="status-dot pending"></span>
+          <span id="gestureStatusText">Gesture: No Gesture</span>
+        </div>
+        <div class="status-row sr-only domain-row">
+          <span id="domainStatusDot" class="status-dot pending"></span>
+          <span id="domainStatusText">Status: Idle</span>
+        </div>
+        <div class="status-row sr-only domain-row">
+          <span id="domainStateDot" class="status-dot pending"></span>
+          <span id="domainStateText">Domain: Default</span>
+        </div>
+        <div class="status-row sr-only domain-row">
+          <span id="techniqueStatusDot" class="status-dot pending"></span>
+          <span id="techniqueStatusText">Technique: Standby</span>
+        </div>
+        <div class="status-row sr-only domain-row">
+          <span id="summonStatusDot" class="status-dot pending"></span>
+          <span id="summonStatusText">Summon: Standby</span>
+        </div>
+
+        <div class="ledger-row">
+          <span>Voice</span>
+          <strong id="systemVoiceReadout">Idle</strong>
+        </div>
+        <div class="ledger-row">
+          <span>State</span>
+          <strong id="systemStateReadout">Idle</strong>
+        </div>
+        <div class="ledger-row">
+          <span>Domain</span>
+          <strong id="systemDomainReadout">None</strong>
+        </div>
+        <div class="ledger-row">
+          <span>Summon</span>
+          <strong id="systemSummonReadout">Inactive</strong>
+        </div>
+        <div class="ledger-row">
+          <span>Gesture</span>
+          <strong id="systemGestureReadout">No Gesture</strong>
+        </div>
+        <div class="ledger-row">
+          <span>Tracking</span>
+          <strong id="systemTrackingReadout">Standby</strong>
+        </div>
+        <div class="ledger-row">
+          <span>Quality</span>
+          <strong id="qualityReadout">Full</strong>
+        </div>
+        <div class="ledger-row">
+          <span>FPS</span>
+          <strong id="fpsReadout">--</strong>
+        </div>
+        <div class="ledger-row">
+          <span>Renderer</span>
+          <strong id="systemRendererReadout">None</strong>
+        </div>
+        <div class="ledger-row">
+          <span>Last Command</span>
+          <strong id="systemLastCommandReadout">None</strong>
+        </div>
+        <div class="ledger-row">
+          <span>Technique</span>
+          <strong id="systemTechniqueReadout">Standby</strong>
+        </div>
+        <div class="sr-only">
+          <strong id="heavyFxReadout">Off</strong>
+          <strong id="idleReadout">No</strong>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <div id="commandGuideModal" class="command-guide-modal" role="dialog" aria-modal="true" aria-labelledby="commandGuideTitle" hidden>
+    <button class="command-guide-scrim" type="button" data-guide-close aria-label="Close command guide"></button>
+    <section class="command-guide-card" tabindex="-1">
+      <button id="commandGuideClose" class="command-guide-close" type="button" aria-label="Close command guide">Close</button>
+      <p class="eyebrow">Operator Notes</p>
+      <h2 id="commandGuideTitle">Command Guide</h2>
+
+      <div class="guide-grid">
+        <article>
+          <h3>Start</h3>
+          <p>Click Start System, then allow camera and microphone access in your respected browser.</p>
+        </article>
+        <article>
+          <h3>Domains</h3>
+          <p>Peace Sign + "Domain Expansion" opens Unlimited Void.</p>
+          <p>Fist + "Domain Expansion" opens Shrine.</p>
+        </article>
+        <article>
+          <h3>Techniques</h3>
+          <p>Blue sign + "Blue" creates Blue.</p>
+          <p>Open palm + "Red" creates Red.</p>
+          <p>When Blue and Red are active, say "Purple" or "Hollow Purple".</p>
+        </article>
+        <article>
+          <h3>Summon</h3>
+          <p>Two fists + "With this treasure, I summon" activates Mahoraga.</p>
+          <p>The hidden direct summon button remains available in code for demos.</p>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/meshopt_decoder.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="script.js?v=six-eyes-soft-1"></script>
+</body>
+</html>
